@@ -41,7 +41,9 @@ python core/vibeguard-score.py demo-repo/broken-app/
 
 ### 2. Inject the VibeGuard QA™ System Prompt
 
-Copy the rules from `vibeguard-standalone.md` (or let your IDE pick them up automatically via `.cursorrules` / `.clauderules`) to instruct your AI assistant (Cursor, Claude Code, or Copilot).
+Copy the rules from `vibeguard-standalone.md` (or let your IDE pick them up automatically via `.cursorrules` / `.clauderules`) to instruct your AI assistant.
+
+*(Note: The actual `.cursorrules`, `.clauderules`, and `vibeguard-standalone.md` files are part of the **Premium VibeGuard QA™ Package** and are not included in this free demo repository.)*
 
 ---
 

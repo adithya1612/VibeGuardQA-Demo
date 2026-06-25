@@ -1,7 +1,7 @@
 # VibeGuard QA™ Compliance Report
 
 **Generated on:** 2026-06-25  
-**Target Directory:** `demo-repo/broken-app/`  
+**Target Directory:** `broken-app/`  
 **Overall Status:** **FAIL**  
 **Compliance Score:** **50.0%** (Gate: >=80.0%)
 

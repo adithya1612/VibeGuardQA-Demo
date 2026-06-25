@@ -1,0 +1,14 @@
+{
+  "name": "vibeguard-broken-app",
+  "version": "1.0.0",
+  "description": "VibeGuard QA intentional vulnerable app demo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "4.19.2",
+    "mysql2": "3.10.2",
+    "dotenv": "16.4.5"
+  }
+}

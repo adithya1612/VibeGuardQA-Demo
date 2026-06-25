@@ -1,6 +1,11 @@
 # VibeGuard QA™ — Quick Start & Setup Guide
 
-Welcome to VibeGuard QA™! This guide explains how to set up and run the VibeGuard 80% Compliance Standard pack on your application.
+Welcome to VibeGuard QA™! 
+
+> [!NOTE]
+> **This is a preview of the Quick Start guide included in the premium VibeGuard QA™ package.** The rules files (`.cursorrules`, `.clauderules`, etc.) mentioned below are provided when you purchase the full framework and are not included in this free demo repository.
+
+This guide explains how to set up and run the VibeGuard 80% Compliance Standard pack on your application.
 
 VibeGuard QA™ is a zero-infrastructure, local compliance framework that audits, hardens, and checks AI-generated codebases before they hit production, helping you defend against SQL injection, unhandled crashes, hardcoded credentials, and performance resource leaks.
 

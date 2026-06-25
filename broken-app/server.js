@@ -3,6 +3,7 @@ const mysql = require('mysql2/promise');
 const app = express();
 const port = process.env.PORT || 3000;
 
+// INTENTIONAL VULNERABILITY FOR DEMO — DO NOT REPLICATE
 // Hardcoded secret (VG-SEC-001)
 const STRIPE_SECRET = "sk_test_51P32jABcDefGhIjKlMnOpQrStUvWxYz1234567890";
 
