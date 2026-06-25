@@ -17,20 +17,6 @@ VibeGuard operates using two distinct, complementary auditing layers:
 
 ---
 
-## 📂 What's in the ZIP File?
-
-When you extract the ZIP file, you get:
-- **IDE Rules:** `.cursorrules`, `.clauderules`, `.github/copilot-instructions.md`, and `.cursor/rules/vibeguard-qa.mdc`
-- **Standalone Prompt:** `vibeguard-standalone.md` (for browser chats)
-- **Changelog:** `CHANGELOG.md` (release log and known limitations)
-- **Scoring Engine Script:** `core/vibeguard-score.py`
-- **Modular Prompts:** `prompt-pack/`
-- **Scoring Rubric:** `core/coverage-rubric.md` and `core/methodology-onepager.md`
-- **CI/CD Integration:** `ci-cd/github-actions-validation.yml`
-- **Sanity Test Fixtures:** `fixtures/`
-
----
-
 ## 📋 Prerequisites
 
 1. **Python 3.x** (Required to run the local scorer scanner script).
