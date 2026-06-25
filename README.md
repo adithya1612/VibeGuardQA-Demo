@@ -51,7 +51,9 @@ Copy the rules from `vibeguard-standalone.md` (or let your IDE pick them up auto
 
 Provide your AI assistant with the scanner outputs or run the following instruction:
 
-> *"Harden this application according to the VibeGuard standards. Parameterize queries, migrate keys to environment variables, close connections properly, add JSON structured logging with correlation IDs, include a database health-check probe, and configure the Dockerfile to run as the non-root user `node`."*
+> *"Harden this application according to the VibeGuard standards."*
+
+*(Because the premium VibeGuard `.cursorrules` are installed, your AI already knows exactly what to do. You just have to ask it to harden the app, and it handles the rest automatically!)*
 
 The AI assistant will automatically generate the clean version shown in `repaired-app/`.
 

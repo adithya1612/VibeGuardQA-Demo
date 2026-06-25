@@ -4,7 +4,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // INTENTIONAL VULNERABILITY FOR DEMO — DO NOT REPLICATE
-// Hardcoded secret (VG-SEC-001)
+// Hardcoded secret
 const STRIPE_SECRET = "sk_test_51P32jABcDefGhIjKlMnOpQrStUvWxYz1234567890";
 
 // MySQL configuration with exposed password
@@ -15,7 +15,7 @@ const dbConfig = {
   database: 'test_db'
 };
 
-// SQL Injection Vulnerability (VG-SEC-002) using backtick interpolation
+// SQL Injection Vulnerability using backtick interpolation
 app.get('/api/users', async (req, res) => {
   const searchTerm = req.query.username;
   
@@ -26,14 +26,14 @@ app.get('/api/users', async (req, res) => {
     const query = `SELECT * FROM users WHERE username = '${searchTerm}'`;
     const [rows] = await connection.execute(query);
     
-    // Connection Leak: Missing connection.end() call (VG-OPS-004)
+    // Connection Leak: Missing connection.end() call
     res.json({ success: true, data: rows });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// Missing Health endpoint (VG-OPS-001) and correlation ID logging (VG-OPS-003)
+// Missing Health endpoint and correlation ID logging
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
