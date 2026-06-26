@@ -1,8 +1,8 @@
 # VibeGuard QA™ Compliance Audit Report
 
 ## 📋 Executive Summary
-* **Scan Timestamp:** 2026-06-25 18:48:38
-* **Target Directory:** `C:\Users\adith\VibeGuard AI\vibeguard-demo\broken-app`
+* **Scan Timestamp:** 2026-06-25 18:48:21
+* **Target Directory:** `C:\Users\adith\VibeGuard AI\vibe-guard-qa\demo-repo\broken-app`
 * **Verdict:** **🔴 FAIL** (Compliance Gate: >= 80.0 Points)
 * **Total Score:** **50%**
 
@@ -88,13 +88,13 @@
 ---
 
 ## 🔍 Critical Gaps Encountered
-- **🟠 HIGH** | `VG-SEC-003` | **Infrastructure** | Access Control & Docker Hardening: Dockerfile does not contain a USER instruction. Container will run as root. in `../vibeguard-demo/broken-app\Dockerfile:1` *(Effort: 10 min)*
-- **🔴 CRITICAL** | `VG-SEC-001` | **Security** | Secrets & Credentials Governance: Hardcoded credential key or Stripe token detected: const STRIPE_SECRET = "[REDACTED_CREDENTIAL]StUvWxYz1234567890"; in `../vibeguard-demo/broken-app\server.js:8` *(Effort: 15 min)*
-- **🔴 CRITICAL** | `VG-SEC-002` | **Security** | Injection Defense: Potential database query string concatenation (SQL injection risk): const query = `SELECT * FROM users WHERE username = '${searchTerm}'`; in `../vibeguard-demo/broken-app\server.js:26` *(Effort: 20 min)*
-- **🟡 MEDIUM** | `VG-FE-002` | **Security** | Strict Payload Validation Ingress: Direct req.body/req.query property read. Implement Zod validation checks: const searchTerm = req.query.username; in `../vibeguard-demo/broken-app\server.js:20` *(Effort: 20 min)*
-- **🟠 HIGH** | `VG-OPS-004` | **Performance** | Database Connection Pool Management: Database client connection opened but no .close() or client.release() method located. in `../vibeguard-demo/broken-app\server.js:1` *(Effort: 15 min)*
-- **🟡 MEDIUM** | `VG-OPS-001` | **Reliability** | Status Endpoint Verification: Backend API server entrypoint found, but no system status health route (/health or /healthz) is configured. in `../vibeguard-demo/broken-app\server.js:1` *(Effort: 15 min)*
-- **🟡 MEDIUM** | `VG-OPS-003` | **Reliability** | Correlation Trace Context Propagation: Request tracing context or Correlation trace ID header propagation is missing from server telemetry. in `../vibeguard-demo/broken-app\server.js:1` *(Effort: 30 min)*
+- **🟠 HIGH** | `VG-SEC-003` | **Infrastructure** | Access Control & Docker Hardening: Dockerfile does not contain a USER instruction. Container will run as root. in `demo-repo/broken-app\Dockerfile:1` *(Effort: 10 min)*
+- **🔴 CRITICAL** | `VG-SEC-001` | **Security** | Secrets & Credentials Governance: Hardcoded credential key or Stripe token detected: const STRIPE_SECRET = "[REDACTED_CREDENTIAL]0"; in `demo-repo/broken-app\server.js:7` *(Effort: 15 min)*
+- **🔴 CRITICAL** | `VG-SEC-002` | **Security** | Injection Defense: Potential database query string concatenation (SQL injection risk): const query = `SELECT * FROM users WHERE username = '${searchTerm}'`; in `demo-repo/broken-app\server.js:25` *(Effort: 20 min)*
+- **🟡 MEDIUM** | `VG-FE-002` | **Security** | Strict Payload Validation Ingress: Direct req.body/req.query property read. Implement Zod validation checks: const searchTerm = req.query.username; in `demo-repo/broken-app\server.js:19` *(Effort: 20 min)*
+- **🟠 HIGH** | `VG-OPS-004` | **Performance** | Database Connection Pool Management: Database client connection opened but no .close() or client.release() method located. in `demo-repo/broken-app\server.js:1` *(Effort: 15 min)*
+- **🟡 MEDIUM** | `VG-OPS-001` | **Reliability** | Status Endpoint Verification: Backend API server entrypoint found, but no system status health route (/health or /healthz) is configured. in `demo-repo/broken-app\server.js:1` *(Effort: 15 min)*
+- **🟡 MEDIUM** | `VG-OPS-003` | **Reliability** | Correlation Trace Context Propagation: Request tracing context or Correlation trace ID header propagation is missing from server telemetry. in `demo-repo/broken-app\server.js:1` *(Effort: 30 min)*
 
 ---
 
@@ -174,13 +174,13 @@ npx playwright test tests/vibeguard.spec.ts
 Copy and paste this instruction block into your AI coding assistant to automatically resolve the identified gaps:
 
 ```text
-- In ../vibeguard-demo/broken-app\Dockerfile (line 1): Define an explicit USER inside the Dockerfile so the container is restricted from running with root privileges.
-- In ../vibeguard-demo/broken-app\server.js (line 8): Banish hardcoded stripe/api credentials, secrets, or keys. Load secrets dynamically from environment configurations (e.g. process.env or os.getenv).
-- In ../vibeguard-demo/broken-app\server.js (line 26): Banish raw SQL query string concatenation. Implement parameter bindings (e.g. '?', '$1') or ORM parameters to defend against SQL injections.
-- In ../vibeguard-demo/broken-app\server.js (line 20): Remove direct req.body / req.query / request parameter reads and enforce validation using strict schemas (e.g. FastAPI Pydantic BaseModel or Zod parse validation).
-- In ../vibeguard-demo/broken-app\server.js (line 1): Ensure database connections and socket pools are closed explicitly via a finally block closure.
-- In ../vibeguard-demo/broken-app\server.js (line 1): Implement system health check status endpoints (/health or /healthz) to report connectivity of databases/caches.
-- In ../vibeguard-demo/broken-app\server.js (line 1): Inject middleware to propagate trace correlation headers (X-Correlation-ID) across request and log logs.
+- In demo-repo/broken-app\Dockerfile (line 1): Define an explicit USER inside the Dockerfile so the container is restricted from running with root privileges.
+- In demo-repo/broken-app\server.js (line 7): Banish hardcoded stripe/api credentials, secrets, or keys. Load secrets dynamically from environment configurations (e.g. process.env or os.getenv).
+- In demo-repo/broken-app\server.js (line 25): Banish raw SQL query string concatenation. Implement parameter bindings (e.g. '?', '$1') or ORM parameters to defend against SQL injections.
+- In demo-repo/broken-app\server.js (line 19): Remove direct req.body / req.query / request parameter reads and enforce validation using strict schemas (e.g. FastAPI Pydantic BaseModel or Zod parse validation).
+- In demo-repo/broken-app\server.js (line 1): Ensure database connections and socket pools are closed explicitly via a finally block closure.
+- In demo-repo/broken-app\server.js (line 1): Implement system health check status endpoints (/health or /healthz) to report connectivity of databases/caches.
+- In demo-repo/broken-app\server.js (line 1): Inject middleware to propagate trace correlation headers (X-Correlation-ID) across request and log logs.
 ```
 
 ---

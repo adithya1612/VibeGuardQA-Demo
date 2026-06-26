@@ -4,14 +4,14 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Correlation ID helper middleware
+// Correlation ID helper middleware (VG-OPS-003)
 app.use((req, res, next) => {
   req.correlationId = req.headers['x-correlation-id'] || `c-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
   res.setHeader('x-correlation-id', req.correlationId);
   next();
 });
 
-// Securely loaded Stripe secret from environment
+// Securely loaded Stripe secret from environment (VG-SEC-001)
 const STRIPE_SECRET = process.env.STRIPE_SECRET_KEY;
 
 // Connection Pool config using environment variables
@@ -25,7 +25,7 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 
-// Secure Parameterized Query implementation
+// Secure Parameterized Query implementation (VG-SEC-002)
 app.get('/api/users', async (req, res) => {
   const searchTerm = req.query.username;
   
@@ -33,7 +33,7 @@ app.get('/api/users', async (req, res) => {
     return res.status(400).json({ error: "Username query parameter is required" });
   }
 
-  // Structured Logging with correlation context
+  // Structured Logging with correlation context (VG-OPS-002, VG-OPS-003)
   console.log(JSON.stringify({
     level: "info",
     message: `Searching for user: ${searchTerm}`,
@@ -46,7 +46,7 @@ app.get('/api/users', async (req, res) => {
     const query = 'SELECT id, username, email FROM users WHERE username = ?';
     const [rows] = await pool.execute(query, [searchTerm]);
     
-    // Pool handles connections automatically - no leaks
+    // Pool handles connections automatically - no leaks (VG-OPS-004)
     res.json({ success: true, data: rows });
   } catch (err) {
     console.error(JSON.stringify({
@@ -59,7 +59,7 @@ app.get('/api/users', async (req, res) => {
   }
 });
 
-// Active Health Endpoint implementation
+// Active Health Endpoint implementation (VG-OPS-001)
 app.get('/health', async (req, res) => {
   try {
     // Basic connectivity assertion
